@@ -1,0 +1,52 @@
+import java.util.Scanner;
+public class GradeCalculator {
+  public static void main(String[] args) {
+    Scanner scan = new Scanner (System.in);
+    
+    //getting array length
+    System.out.println("How many tests would you like to calculate the average of?"); 
+    int numTest = scan.nextInt(); 
+    
+    double test[];
+    test = new double[numTest]; 
+    
+    //filling in array with test scores
+    for (int i = 0; i<numTest; i++) { 
+      System.out.println("Type in grade #"+(i+1)); 
+      test[i] = scan.nextDouble(); 
+    }
+    
+    //outputting induvidual test scores and letter grades
+    for (int i = 0; i<numTest; i++) { 
+      System.out.println("Test "+(i+1)+" Grade: "+determineGrade(test[i])); 
+    }
+    
+    //outputting average and final average letter grade
+    double average = calcAverage(test);
+    System.out.println("Average  "+average+" Grade: "+determineGrade(average));
+  }
+  
+  //returns average test score 
+  public static double calcAverage(double[] a){ 
+    double sum = 0;
+    for (int i = 0; i<a.length; i++) { //finds sum of all the values in the array using for loop
+      sum = sum + a[i]; 
+  }
+    return sum/a.length; //dividing the sum by the number of values in the array to get the average
+  }
+  
+  //if else statements in order to determine a letter grade from a test score
+  public static String determineGrade (double x){
+    if (x>=90) {
+      return "A";
+    } else if (x>=80) {
+      return "B";
+    } else if (x>=70) {
+      return "C";
+    } else if (x>=60) {
+      return "D";
+    } else {
+      return "F"; 
+    }
+  }
+}
